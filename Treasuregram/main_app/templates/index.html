@@ -3,22 +3,34 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link 	href = "{% static 'boostrape.min.css' %}"
+		<link 	href = "{% static 'bootstrap.min.css' %}"
 			rel = "stylesheet">
 		<link rel = "stylesheet" type = "text/css" href = "{% static 'style.css' %}" />
 		<title>Treasure Gram</title>
 	</head>
 	<body>
-		<h1>Treasure Gram</h1>
-		{% for treasure in treasures %}
-			<p>{{ treasure.name }}</p>
-			{% if treasure.value > 0 %}
-				<p>{{ treasure.value }}</p>
-			{% else %}
-				<p>Unknown</p>
-			{% endif %}
-			<p>{{ treasure.material }}</p>
-			<p>{{ treasure.location }}</p>
-		{% endfor %}
+		<nav class = "navbar navbar-default navbar-static-top text-center">
+			<a href="/">
+				<img src = "{% static 'images/logo.png' %}" alt = "TreasureGram">
+			</a></nav>
+		<main class="container" role="main">
+			<h1>Treasure Gram</h1>
+			<div class="treasure panel panel-default">
+				{% for treasure in treasures %}
+				<div class="panel-heading">
+					<h2 class='panel-title'>{{ treasure.name }}</h2>
+				</div>
+				<div class='panel-body'>
+					<p>{{ treasure.material }}</p>
+					{% if treasure.value > 0 %}
+						{{ treasure.value }}
+					{% else %}
+						<p>{{ Unknown }}</p>
+					{% endif %}
+					<p>{{ treasure.location }}</p>
+				</div>
+				{% endfor %}
+			</div>
+		</main>
 	</body>
 </html>
