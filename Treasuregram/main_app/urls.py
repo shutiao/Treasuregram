@@ -4,5 +4,5 @@ from . import views
 urlpatterns = [
         path('', views.index),
         re_path(r'^([0-9]+)/$', views.detail, name = 'detail'),
-        path('post_url', views.post_treasure, name='post_treasure'),
+        path('post_url/', views.post_treasure, name='post_treasure'),
         ]
