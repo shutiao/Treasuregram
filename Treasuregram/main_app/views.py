@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Treasure
 from .forms import TreasureForm
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 
 # Create your views here.
@@ -27,3 +28,13 @@ def post_treasure(request):
         treasure.user = request.user
         treasure.save()
     return HttpResponseRedirect('/')
+
+def profile(request, username):
+    user = User.objects.get(username = username)
+    # The QuerySet filter will look up all of the treasures that belong to this user
+    treasures = Treasure.objects.filter(user=user)
+    return render(request, 'profile.html',
+    {
+        'username': username,
+        'treasures': treasures
+    })
