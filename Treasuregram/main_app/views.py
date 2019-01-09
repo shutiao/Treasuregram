@@ -21,7 +21,7 @@ def detail(request, treasure_id):
 #
 def post_treasure(request):
     #Create the form and link it to the posted data
-    form = TreasureForm(request.POST)
+    form = TreasureForm(request.POST, request.FILES)
     if form.is_valid():
         form.save(commit = True)
     return HttpResponseRedirect('/')

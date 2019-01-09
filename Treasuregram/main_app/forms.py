@@ -13,5 +13,5 @@ class TreasureForm(forms.ModelForm):
         model = Treasure
         # the fields property defines which model fields should have coresponding form inputs.
         # the HTML form will display labels and iputs for these five fields
-        fields = ['name', 'value', 'location', 'material', 'img_url']
+        fields = ['name', 'value', 'location', 'material', 'img_url', 'image']
        
